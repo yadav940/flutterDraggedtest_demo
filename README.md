@@ -1,16 +1,8 @@
 # fluttertest
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+this is demo application 
+screenshots
+![demo](https://github.com/user-attachments/assets/7994b682-f6e9-439d-856e-02f784b37731)
+funtinality video
+[demo_app.webm](https://github.com/user-attachments/assets/14be1cec-d313-4815-a546-0b950d2c57b8)
