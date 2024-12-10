@@ -13,6 +13,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
+      backgroundColor: Colors.white,
       body: Obx(() => Center(
             child: Container(
               padding: const EdgeInsets.all(16),
