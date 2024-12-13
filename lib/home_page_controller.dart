@@ -2,21 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePageController extends GetxController {
-  int _valueDroppedItem = 0;
-  int _valuePickedItem = 0;
-  var list = [0, 1, 2, 3, 4].obs;
+  int valueDroppedItem = 0;
+  int valuePickedItem = 0;
+  RxList<int> list = [0, 1, 2, 3, 4].obs;
 
   void acceptDraggedItem(int index) {
-    _valueDroppedItem = index;
-    int pikedIndex = list.indexOf(_valuePickedItem);
-    int droppedIndex = list.indexOf(_valueDroppedItem);
+    valueDroppedItem = index;
+    int pikedIndex = list.indexOf(valuePickedItem);
+    int droppedIndex = list.indexOf(valueDroppedItem);
 // Swap the values
-    list[pikedIndex] = _valueDroppedItem;
-    list[droppedIndex] = _valuePickedItem;
+    if (pikedIndex > droppedIndex) {
+      for (int i = pikedIndex; i >= droppedIndex; i--) {
+        if (i == droppedIndex) {
+          list[i] = valuePickedItem;
+          break;
+        }
+        list[i] = list[i - 1];
+      }
+    } else {
+      for (int i = pikedIndex; i <= droppedIndex; i++) {
+        if (i == droppedIndex) {
+          list[i] = valuePickedItem;
+          break;
+        }
+        list[i] = list[i + 1];
+      }
+    }
   }
 
   void setIsDragging(int index) {
-    _valuePickedItem = index;
+    valuePickedItem = index;
   }
 
   IconData getItem(int index) {

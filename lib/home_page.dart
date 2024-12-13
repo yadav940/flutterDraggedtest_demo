@@ -38,13 +38,66 @@ class MyHomePage extends StatelessWidget {
                           onDragStarted: () {
                             homePageController.setIsDragging(index);
                           },
+                          onDragCompleted: (){
+
+                            debugPrint("-----onDragCompleted----");
+                          },
+                          onDragEnd: (DraggableDetails data){
+
+                            debugPrint("-----onDragEnd--offset--${data.offset}-----");
+                          },
+                          onDraggableCanceled: (Velocity v,Offset offset){
+                            //debugPrint("-----onDraggableCanceled--offset--${offset}-----");
+
+                          },
+                          onDragUpdate: (DragUpdateDetails data){
+
+                            // if(data.delta.dx>-1.3 && data.delta.dx<-0.5){
+                            //   homePageController.acceptDraggedItem(3);
+                            // }
+                            // if(data.delta.dx>-0.5 && data.delta.dx<0.3){
+                            //   homePageController.acceptDraggedItem(2);
+                            // }
+                            // if(data.delta.dx>-0.5 && data.delta.dx<0.0){
+                            //   homePageController.acceptDraggedItem(1);
+                            // }
+
+
+
+                            debugPrint("-----onDragUpdate--delta--${data.delta}-----");
+
+                          },
                           feedback: getOptions(index),
-                          child: getOptions(index),
+                          child: AnimatedScale(
+                            scale: homePageController.valuePickedItem == index
+                                ? 1.1
+                                : 1,
+                            duration: const Duration(milliseconds: 200),
+                            child: getOptions(index),
+                          ),
                         );
                       },
                       onAccept: (int data) {
                         homePageController.acceptDraggedItem(index);
                       },
+                      onLeave: (int? data){
+
+                        //debugPrint("-----onLeave----$data-----");
+                      },
+                      onMove: (DragTargetDetails<int> data){
+                        //debugPrint("-----onMove-----${data.data}---");
+                        //homePageController.acceptDraggedItem(data.data);
+                      },
+                        hitTestBehavior:HitTestBehavior.opaque,
+                      onWillAccept: (int? data){
+
+                        //debugPrint("-----onWillAccept-----${data}---");
+                        return true;
+                      },
+                      // onAcceptWithDetails: (DragTargetDetails<int> data){
+                      //   debugPrint("-----onAcceptWithDetails-----${data.data}---");
+                      //   homePageController.acceptDraggedItem(data.data);
+                      // },
                     ),
                   )
                 ]
